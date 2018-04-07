@@ -22,7 +22,7 @@ $sql = "SELECT ProjectID FROM projects WHERE ProjectID='$id'";
 $result = mysql_query($sql);
 if(mysql_num_rows($result) >0){
     mysql_query("Delete FROM projects WHERE ProjectID = '$id'", $db);
-    echo "A branch was successfully removed <br>";
+    echo "A project was successfully removed <br>";
 }
 else
 {
