@@ -61,12 +61,14 @@ if ($_SESSION['privileges'] == "1"){
         <label class="containers"><p>Hybrid</p>
             <input type="radio" class="radio" name="category" value="3" required>
             <span class="checkmark"></span>
+
         </label>
     </div>
         <br>
         <div id="cardLabel" class="cardLabel">
             <label class="control-label"> Card Label </label>
             <input id="cardLabelField" class="formControl" type="text" name="label[]" required><br><br>
+<!--            <details hidden> </details>-->
             <br>
             <br>
         </div>
@@ -91,7 +93,8 @@ $("button").click(function() {
     $("input.formControl")
         .last()
         .clone()
-        .appendTo($("body"))
+        .appendTo($(".cardLabel"))
+        //.insertAfter($(".cardLabel"))
         .find("input").attr("name",function(i,oldVal) {
             return oldVal.replace(/\[(\d+)\]/,function(_,m){
                 return "[" + (+m + 1) + "]";
