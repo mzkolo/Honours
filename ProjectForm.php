@@ -17,16 +17,16 @@
         </head>
 <div class="content">
 <header>
-<table class="headings" width="100%">
-	<tr>
-		<td>
-			<h1 class="grassroots">SmartSort</h1>
-		</td>
-		<td>
-			<h2 class="title">THE HUB OF CARD SORTING</h2>
-		</td>
-	</tr>
-	</table>
+<!--<table class="headings" width="100%">-->
+<!--	<tr>-->
+<!--		<td>-->
+<!--			<h1 class="grassroots">SmartSort</h1>-->
+<!--		</td>-->
+<!--		<td>-->
+<!--			<h2 class="title">THE HUB OF CARD SORTING</h2>-->
+<!--		</td>-->
+<!--	</tr>-->
+<!--	</table>-->
     <h3><a href="home.php"> Back </a><h3>
 </header>
 
@@ -68,7 +68,7 @@ if ($_SESSION['privileges'] == "1"){
         <div id="cardLabel" class="cardLabel">
             <label class="control-label"> Card Label </label>
             <input id="cardLabelField" class="formControl" type="text" name="label[]" required><br><br>
-<!--            <details hidden> </details>-->
+            <details hidden> </details>
             <br>
             <br>
         </div>
@@ -93,8 +93,8 @@ $("button").click(function() {
     $("input.formControl")
         .last()
         .clone()
-        .appendTo($(".cardLabel"))
-        //.insertAfter($(".cardLabel"))
+        // .appendTo($(".cardLabel"))
+        .insertAfter($("details"))
         .find("input").attr("name",function(i,oldVal) {
             return oldVal.replace(/\[(\d+)\]/,function(_,m){
                 return "[" + (+m + 1) + "]";
