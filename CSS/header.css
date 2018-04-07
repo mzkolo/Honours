@@ -1,0 +1,21 @@
+.navbar {
+    font-size:22px;
+    background: #008aa3;
+    border: none;
+    margin-left: auto;
+    height: 57px;
+}
+
+.nav > li > a:focus, .nav > li > a:hover, .nav .open > a, .nav .open > a:focus, .nav .open > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    border-bottom: 3px solid transparent;
+    background: none;
+}
+
+.navbar a, .dropdown-menu > li > a, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover, .navbar-toggle{
+    color:black;
+}
+
+.nav li:hover {
+    background: #d2d2d2;
+    border-bottom: #0029f9 3px solid;
+}

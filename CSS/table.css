@@ -1,0 +1,102 @@
+#table
+{
+    width:300px;
+    background: #ede1ea;
+    margin-top:15px;
+}
+
+.panel{
+    width:300px;
+    background: #0029f9;
+    margin-top:15px;
+}
+
+.control-label{
+    margin-bottom: 5px;
+    margin-right: 5px;
+    font-size: 2em;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-weight: 400;
+}
+
+.formControl{
+    display: block;
+    width: 50%;
+    height: 40px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #44545b;
+    border: 3px solid #d4dddf;
+    border-radius:3px;
+}
+
+.containers {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.containers p
+{
+    padding-left: 50px!important;
+}
+
+.containers input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 25%;
+    margin-top: 5px;
+}
+
+.containers:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.containers input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.containers input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.containers .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.content{
+    padding-left: 20px;
+    padding-top: 50px;
+}
+
+.category{
+    padding-right: 500px;
+}
