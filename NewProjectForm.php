@@ -17,6 +17,8 @@
 <?php
 include "db.php";
 
+
+
 $mysqli = new mysqli("silva.computing.dundee.ac.uk", "cardsort", "9844.cs.4498");
 
 /* Check the connection. */

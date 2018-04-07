@@ -1,0 +1,36 @@
+.top{
+    position: relative;
+    background-color: #ffffff;
+    height: 68px;
+    padding-top: 20px;
+    line-height: 50px;
+    overflow: hidden;
+}
+
+.w3-container{
+    padding: 0.01em 16px;
+}
+
+*, ::before, ::after{
+    box-sizing: inherit;
+}
+
+.grassroots {
+    margin-top: 10px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    text-align: left;
+    padding: 10px;
+    color: green;
+}
+
+.title{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    text-align: right;
+    margin: 2px;
+    padding-right: 10px;
+    color: black;
+}
+
+.headings{
+    margin-top: 10px;
+}

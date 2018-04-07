@@ -62,7 +62,6 @@ include "loginform.php";
 
 <?php
 
-
 if ($_SESSION['privileges'] == "1") {
 
     $order = isset($_GET['sort']) ? $_GET['sort'] : 'ProjectID';
@@ -108,7 +107,6 @@ if ($_SESSION['privileges'] == "1") {
                     <input type="submit" value="Submit">
                 </div>
             </form>
-
         <td width = "50%" align="center">
             <form name="Update Project" action="UpdateProjectForm.php" method="post" id = "update" class="center">
                 <div class="field">

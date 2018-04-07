@@ -17,6 +17,16 @@
         </head>
 <div class="content">
 <header>
+<table class="headings" width="100%">
+	<tr>
+		<td>
+			<h1 class="grassroots">SmartSort</h1>
+		</td>
+		<td>
+			<h2 class="title">THE HUB OF CARD SORTING</h2>
+		</td>
+	</tr>
+	</table>
     <h3><a href="home.php"> Back </a><h3>
 </header>
 
@@ -64,17 +74,32 @@ if ($_SESSION['privileges'] == "1"){
         <input type="submit" value="Submit">
     </div>
 </form>
-<input type="button" value="Add Card" id="clone">
+<button> Click to Clone </button>
 </div>
 <br><br>
 <script>
-        $( 'input#clone' ).click(
-            function()
-            {
-                $("#cardLabelField").clone().attr( 'id', 'new_form' ).appendTo("body");
+        // $( 'input#clone' ).click(
+        //     function()
+        //     {
+        //         $("#cardLabelField").clone().attr('id', 'new_form' ).appendTo("body");
+        //
+        //     }
+        // )
 
-            }
-        )
+$("button").click(function() {
+
+    $("input.formControl")
+        .last()
+        .clone()
+        .appendTo($("body"))
+        .find("input").attr("name",function(i,oldVal) {
+            return oldVal.replace(/\[(\d+)\]/,function(_,m){
+                return "[" + (+m + 1) + "]";
+            });
+        });
+
+    return false;
+});
 </script>
 </body>
 </html>
