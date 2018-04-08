@@ -68,7 +68,7 @@ if ($_SESSION['privileges'] == "1"){
         <div id="cardLabel" class="cardLabel">
             <label class="control-label"> Card Label </label>
             <input id="cardLabelField" class="formControl" type="text" name="label[]" required><br><br>
-            <details hidden> </details>
+<!--            <details hidden> </details>-->
             <br>
             <br>
         </div>
@@ -76,7 +76,7 @@ if ($_SESSION['privileges'] == "1"){
         <input type="submit" value="Submit">
     </div>
 </form>
-<button> Click to Clone </button>
+<button> Add Card </button>
 </div>
 <br><br>
 <script>
@@ -93,8 +93,8 @@ $("button").click(function() {
     $("input.formControl")
         .last()
         .clone()
-        // .appendTo($(".cardLabel"))
-        .insertAfter($("details"))
+        .appendTo($(".cardLabel"))
+        // .insertAfter($("details"))
         .find("input").attr("name",function(i,oldVal) {
             return oldVal.replace(/\[(\d+)\]/,function(_,m){
                 return "[" + (+m + 1) + "]";

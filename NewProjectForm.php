@@ -29,11 +29,12 @@ if (mysqli_connect_errno()) {
 }
 
 $ProjectName = $_POST["ProjectName"];
-$label = $_POST['label'];
+$label = $_POST["label"];
 $category = $_POST["category"];
 
 //$stmt = $mysqli->prepare("INSERT INTO cardsortdb.projects(ProjectName, CardLabel, Category) VALUES (?, ?, ?)");
 //$stmt->bind_param("ssi", $ProjectName, $label, $category);
+
 
 mysql_query("INSERT INTO cardsortdb.projects (ProjectName, Category) VALUES ('$ProjectName', '$category')");
 printf("Last inserted record has id %d\n", mysql_insert_id());
@@ -43,17 +44,15 @@ $insert_id = mysql_insert_id();
 
 foreach($label as $element)
 {
-    mysql_query("INSERT INTO cardsortdb.cards (CardLabel, Projects) VALUES ('$element', '$insert_id')");
+    mysql_query("INSERT INTO cardsortdb.cards (CardLabel, Project) VALUES ('$element', '$insert_id')");
 }
 
-
-//$stmt = $mysqli->prepare("INSERT INTO cardsortdb.cards(CardLabel, Projects) VALUES (?, ?)");
+//$stmt = $mysqli->prepare("INSERT INTO cardsortdb.cards(CardLabel, Project) VALUES (?, ?)");
 //$stmt->bind_param("si", $label, $insert_id);
 
 //$stmt->execute();
 //$stmt->close();
 //$mysqli->close();
-
 
 
 
@@ -67,7 +66,7 @@ foreach($label as $element)
 //$sql = "SELECT ProjectID FROM projects WHERE ProjectID='$ProjectID'";
 
 // SQL Insert using variable names
-//mysq_query("INSERT INTO cardsortdb.projects(ProjectID, ProjectName, CardLabel, Category)
+//mysql_query("INSERT INTO cardsortdb.projects(ProjectID, ProjectName, CardLabel, Category)
 //VALUES (ProjectID, '$ProjectName', '$label', '$category')", $db);
 
 //echo "New project created <br>";
