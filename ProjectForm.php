@@ -10,31 +10,16 @@
 
 <html>
 <head>
-    <title> SmartSort | Projects </title>
+    <title> SmartSort | New Projects </title>
     <!--    <meta http-equiv="refresh" content="0; url=projects.php" />-->
     <link rel="stylesheet" type="text/css" href="CSS/table.css">
+    <link rel="stylesheet" type="text/css" href="CSS/buttons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        </head>
-<div class="content">
-<header>
-<!--<table class="headings" width="100%">-->
-<!--	<tr>-->
-<!--		<td>-->
-<!--			<h1 class="grassroots">SmartSort</h1>-->
-<!--		</td>-->
-<!--		<td>-->
-<!--			<h2 class="title">THE HUB OF CARD SORTING</h2>-->
-<!--		</td>-->
-<!--	</tr>-->
-<!--	</table>-->
-    <h3><a href="home.php"> Back </a><h3>
-</header>
-
+</head>
 <body>
-<form action="projects.php" method="post">
-    <input type="search" name="search" placeholder="Search..">
-</form>
 
+<div class="content">
 <?php
 include "loginform.php";
 include "header.php";
@@ -42,10 +27,11 @@ include "header.php";
 if ($_SESSION['privileges'] == "1"){
 ?>
 <form name="Add Project" action="NewProjectForm.php" method="post" id = "add" class="center">
-    <div class="field">
+    <div class="container">
+    <a href="home.php"> <i class="fa fa-arrow-circle-o-left fa-lg"> Back </i></a><br><br>
         <div id="projectTitle" class="projectTitle">
             <label class="control-label"> Project Name </label>
-            <input id="ProjectNameField" class="formControl" type="text" name="ProjectName" required=><br>
+            <input id="ProjectNameField" class="formControl" type="text" name="ProjectName" placeholder="New Project" required><br>
         </div>
         <br>
         </label>
@@ -61,47 +47,27 @@ if ($_SESSION['privileges'] == "1"){
         <label class="containers"><p>Hybrid</p>
             <input type="radio" class="radio" name="category" value="3" required>
             <span class="checkmark"></span>
-
         </label>
-    </div>
+        </div>
         <br>
         <div id="cardLabel" class="cardLabel">
             <label class="control-label"> Card Label </label>
-            <input id="cardLabelField" class="formControl" type="text" name="label[]" required><br><br>
-<!--            <details hidden> </details>-->
-            <br>
-            <br>
+            <input id="cardLabelField" class="formControl" type="text" name="label[]" placeholder="Card" required>
         </div>
-        <br>
-        <input type="submit" value="Submit">
-    </div>
+        <button class="addBtn" type="button"> Add Card <i class="fa fa-plus-circle fa-lg"></i> </button> <br><br><br><br>
+        <input id="saveBtn" class="button" type="submit" value="Save">
+        </div>
 </form>
-<button> Add Card </button>
-</div>
+    </div>
 <br><br>
 <script>
-        // $( 'input#clone' ).click(
-        //     function()
-        //     {
-        //         $("#cardLabelField").clone().attr('id', 'new_form' ).appendTo("body");
-        //
-        //     }
-        // )
-
 $("button").click(function() {
 
     $("input.formControl")
         .last()
         .clone()
+        .val(" ")
         .appendTo($(".cardLabel"))
-        // .insertAfter($("details"))
-        .find("input").attr("name",function(i,oldVal) {
-            return oldVal.replace(/\[(\d+)\]/,function(_,m){
-                return "[" + (+m + 1) + "]";
-            });
-        });
-
-    return false;
 });
 </script>
 </body>

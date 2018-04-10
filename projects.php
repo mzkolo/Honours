@@ -11,3 +11,10 @@
 <html>
 <head>
     <title> SmartSort | Projects </title>
+
+</head>
+</html>
+
+<?php
+
+include "header.php";

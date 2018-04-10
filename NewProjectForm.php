@@ -17,8 +17,6 @@
 <?php
 include "db.php";
 
-
-
 $mysqli = new mysqli("silva.computing.dundee.ac.uk", "cardsort", "9844.cs.4498");
 
 /* Check the connection. */
@@ -45,6 +43,18 @@ $insert_id = mysql_insert_id();
 foreach($label as $element)
 {
     mysql_query("INSERT INTO cardsortdb.cards (CardLabel, Project) VALUES ('$element', '$insert_id')");
+}
+
+if(isset($_POST['category']) == "2" || "3"){
+
+    header("Location: https://zeno.computing.dundee.ac.uk/2017-projects/cardsort/HeadingsForm.php?id=".$insert_id);
+
+}
+
+elseif(isset($_POST['category']) == "1"){
+
+    header("Location: https://zeno.computing.dundee.ac.uk/2017-projects/cardsort/home.php");
+
 }
 
 //$stmt = $mysqli->prepare("INSERT INTO cardsortdb.cards(CardLabel, Project) VALUES (?, ?)");

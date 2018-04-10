@@ -16,7 +16,7 @@ if(!$db){
 echo mysql_error();
 }
 else{
-echo "Successfully connected to DB. <br>";
+//echo "Successfully connected to DB. <br>";
 }
 // CLOSE CONNECTION
 

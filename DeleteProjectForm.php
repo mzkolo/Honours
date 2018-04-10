@@ -23,6 +23,7 @@ $result = mysql_query($sql);
 if(mysql_num_rows($result) >0){
     mysql_query("Delete FROM projects WHERE ProjectID = '$id'", $db);
     echo "A project was successfully removed <br>";
+    header("Location: https://zeno.computing.dundee.ac.uk/2017-projects/cardsort/home.php");
 }
 else
 {
