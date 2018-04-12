@@ -21,13 +21,10 @@ if (mysqli_connect_errno()) {
 
 $HeadingLabel = $_POST["HeadingLabel"];
 
-//printf("Last inserted record has id %d\n", mysql_insert_id());
-print_r($HeadingLabel);
-
+//print_r($HeadingLabel);
 foreach($HeadingLabel as $element)
 {
     mysql_query("INSERT INTO cardsortdb.headings (HeadingLabel, Project) VALUES ('$element', '$id')");
-
 }
 
 header("Location: https://zeno.computing.dundee.ac.uk/2017-projects/cardsort/home.php");

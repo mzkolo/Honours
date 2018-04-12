@@ -10,7 +10,6 @@
 <html>
 <head>
     <title> SmartSort | New Projects </title>
-    <!--    <meta http-equiv="refresh" content="0; url=projects.php" />-->
     <link rel="stylesheet" type="text/css" href="CSS/table.css">
     <link rel="stylesheet" type="text/css" href="CSS/buttons.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -19,7 +18,6 @@
 
 <body>
 <div class="content">
-
 
 <?php
 include "loginform.php";

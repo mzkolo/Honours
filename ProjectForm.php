@@ -11,19 +11,16 @@
 <html>
 <head>
     <title> SmartSort | New Projects </title>
-    <!--    <meta http-equiv="refresh" content="0; url=projects.php" />-->
     <link rel="stylesheet" type="text/css" href="CSS/table.css">
     <link rel="stylesheet" type="text/css" href="CSS/buttons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
-
 <div class="content">
 <?php
 include "loginform.php";
 include "header.php";
-
 if ($_SESSION['privileges'] == "1"){
 ?>
 <form name="Add Project" action="NewProjectForm.php" method="post" id = "add" class="center">
@@ -34,7 +31,6 @@ if ($_SESSION['privileges'] == "1"){
             <input id="ProjectNameField" class="formControl" type="text" name="ProjectName" placeholder="New Project" required><br>
         </div>
         <br>
-        </label>
         <div class="category">
         <label class="control-label"> Sort Type </label>
         <label class="containers"> <p>Open</p>
@@ -54,7 +50,7 @@ if ($_SESSION['privileges'] == "1"){
             <label class="control-label"> Card Label </label>
             <input id="cardLabelField" class="formControl" type="text" name="label[]" placeholder="Card" required>
         </div>
-        <button class="addBtn" type="button"> Add Card <i class="fa fa-plus-circle fa-lg"></i> </button> <br><br><br><br>
+        <button class="addBtn" type="button"> Add Card <i class="fa fa-plus-circle fa-lg"></i> </button><br><br><br><br>
         <input id="saveBtn" class="button" type="submit" value="Save">
         </div>
 </form>

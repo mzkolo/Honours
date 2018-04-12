@@ -13,7 +13,6 @@ include "loginform.php";
 ?>
 
     <!DOCTYPE html>
-
     <html>
     <head>
         <title> SmartSort | Home</title>
@@ -25,7 +24,6 @@ include "loginform.php";
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
         <script>
             window.onload = function(){
                 $("#delete").hide();
@@ -48,8 +46,6 @@ include "loginform.php";
 <?php
     $username = $_SESSION['firstname'];
 ?>
-
-
     <form Name="Create New Project" action="ProjectForm.php" method="post" id="NewProject">
         <div id="CreateBtn" class="CreateBtn">
             <a href="ProjectForm.php">
@@ -57,7 +53,6 @@ include "loginform.php";
             </a>
         </div>
     </form>
-
 <div class="content">
     <h1> Hello <?php echo $username; ?> </h1>
 <?php

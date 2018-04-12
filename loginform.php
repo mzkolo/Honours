@@ -28,9 +28,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
         echo "query has failed";
     }
 
-
     else {
-
         $row = mysql_fetch_array($result);
 
         //$row = mysql_fetch_array($result);
