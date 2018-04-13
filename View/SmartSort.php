@@ -32,7 +32,6 @@ if(isset($_POST['ProjectCode'])) {
         if ($row["ProjectID"] != null){
 //            echo uniqid('Project exists, this is the unique userID prefix: ');
             $projectID = $row["ProjectID"];
-            $projectName = $row["ProjectName"];
         }
         else if ($row["ProjectID"] == null) {
             echo "No project";
@@ -73,7 +72,7 @@ if(isset($_POST['ProjectCode'])) {
 //        $row = mysql_fetch_array($result);
         while ($row = mysql_fetch_array($result)){
             array_push($cards, $row["CardID"]);
-            echo'<div id="cards" data-id='.$row["CardID"].' name='.$row["CardID"].' class="draggable drag-drop">';
+            echo'<div id="cards" data-id='.$row["CardID"].' class="draggable drag-drop">';
             echo $row["CardLabel"];
             echo '</div>';
         }
@@ -95,9 +94,6 @@ if(isset($_POST['ProjectCode'])) {
     <script src="JavaScript/script.js"></script>
 </head>
 <body>
-<div class="title">
-<h1> <?php echo $projectName; ?> </h1>
-</div>
 <form name="Project Code" action="SmartSort.php" method="post" id = "code" class="center">
 <label class="control-label"> Project Code </label>
 <input id="ProjectCodeInput" class="formControl" type="text" name="ProjectCode" placeholder="Enter project code" required><br>

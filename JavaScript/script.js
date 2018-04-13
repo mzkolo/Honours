@@ -50,9 +50,9 @@ window.dragMoveListener = dragMoveListener;
 // enable draggables to be dropped into this
 interact('.dropzone').dropzone({
     // only accept elements matching this CSS selector
-    accept: '#yes-drop',
+    accept: '#cards',
     // Require a 100% element overlap for a drop to be possible
-    overlap: 1,
+    overlap: 0.75,
 
     // listen for drop related events:
 
@@ -76,15 +76,15 @@ interact('.dropzone').dropzone({
         //event.relatedTarget.textContent = 'Dragged out';
     },
     ondrop: function (event) {
-        //event.relatedTarget.textContent = 'QWERTY';
-        // $(document).ready(function(){
-        //     $(“button”).click(function(){
-        //         const cards = document.getElementsByName("71");
-        //         var rect = cards[0].getBoundingClientRect();
-        //         //alert(“Coordinates: ” + rect.left + “px, ” + rect.top + “px”);
-        //         alert(“Left position: ” + rect.left);
-        //     });
-        // });
+        $(document).ready(function(){
+            var element = event.relatedTarget;
+            // alert($(element).data("id"));
+            var x = $(element).data("id");
+                const cards = document.getElementsByName(x.toString());
+                var rect = cards[0].getBoundingClientRect();
+                //alert(“Coordinates: ” + rect.left + “px, ” + rect.top + “px”);
+                alert('Left position: '+ rect.left);
+        });
     },
     ondropdeactivate: function (event) {
         // remove active dropzone feedback

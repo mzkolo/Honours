@@ -40,32 +40,13 @@ if(isset($_POST['ProjectCode'])) {
     }
 
     // **********************************************
-    //          GET HEADINGS
-    // **********************************************
-
-    $sqlQry = "SELECT * FROM cardsortdb.headings WHERE Project = '$projectID'";
-
-    echo '<div style="position:absolute; left: 300px; top:30px;" class="dropHeadings">';
-    $result = mysql_query($sqlQry, $db);
-    if ($result == false) {
-        echo "query has failed";
-    } else {
-        while ($row = mysql_fetch_array($result)){
-            echo'<div id="heading" data-id='.$row["HeadingID"].' class="dropzone">';
-            echo $row["HeadingLabel"];
-            echo '</div>';
-        }
-    }
-    echo '</div>';
-
-    // **********************************************
     //          GET CARDS
     // **********************************************
 
     $cards = array();
     $sqlQry = "SELECT * FROM cardsortdb.cards WHERE Project = '$projectID'";
+    // echo $sqlQry;
 
-    echo '<div class="draggableCards">';
     $result = mysql_query($sqlQry, $db);
     if ($result == false) {
         echo "query has failed";
@@ -78,6 +59,26 @@ if(isset($_POST['ProjectCode'])) {
             echo '</div>';
         }
     }
-    echo '</div>';
+
+    // **********************************************
+    //          GET HEADINGS
+    // **********************************************
+
+    $sqlQry = "SELECT * FROM cardsortdb.headings WHERE Project = '$projectID'";
+    //echo $sqlQry;
+
+    $result = mysql_query($sqlQry, $db);
+    if ($result == false) {
+        echo "query has failed";
+    } else {
+//        $row = mysql_fetch_array($result);
+        while ($row = mysql_fetch_array($result)){
+            echo'<div id="heading" data-id='.$row["HeadingID"].' class="dropzone">';
+
+            echo $row["HeadingLabel"];
+            echo '</div>';
+        }
+    }
+
     print_r($cards);
 }
