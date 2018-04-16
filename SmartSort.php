@@ -38,11 +38,15 @@ if(isset($_POST['ProjectCode'])) {
             echo "No project";
         }
     }
+    echo'<div id="title" ='.$row["ProjectName"].' class="title">';
+    echo  $row["ProjectName"];
+    echo '</div>';
 
     // **********************************************
     //          GET HEADINGS
     // **********************************************
 
+    $headings = array();
     $sqlQry = "SELECT * FROM cardsortdb.headings WHERE Project = '$projectID'";
 
     echo '<div style="position:absolute; left: 300px; top:30px;" class="dropHeadings">';
@@ -51,7 +55,8 @@ if(isset($_POST['ProjectCode'])) {
         echo "query has failed";
     } else {
         while ($row = mysql_fetch_array($result)){
-            echo'<div id="heading" data-id='.$row["HeadingID"].' class="dropzone">';
+            array_push($headings, $row["HeadingID"]);
+            echo'<div id="heading" data-id='.$row["HeadingID"].' name='.$row["HeadingID"].' class="dropzone">';
             echo $row["HeadingLabel"];
             echo '</div>';
         }
@@ -70,7 +75,6 @@ if(isset($_POST['ProjectCode'])) {
     if ($result == false) {
         echo "query has failed";
     } else {
-//        $row = mysql_fetch_array($result);
         while ($row = mysql_fetch_array($result)){
             array_push($cards, $row["CardID"]);
             echo'<div id="cards" data-id='.$row["CardID"].' name='.$row["CardID"].' class="draggable drag-drop">';
@@ -79,7 +83,8 @@ if(isset($_POST['ProjectCode'])) {
         }
     }
     echo '</div>';
-    print_r($cards);
+//    print_r($cards);
+//    print_r($headings);
 }
 ?>
 
@@ -87,21 +92,19 @@ if(isset($_POST['ProjectCode'])) {
 <html>
 <head>
     <title> SmartSort | Card Sort </title>
-    <link rel="stylesheet" href="CSS/DragDropStyle.css">
+<!--    <link rel="stylesheet" href="CSS/DragDropStyle.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/interactjs@1.3/dist/interact.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="JavaScript/script.js"></script>
 </head>
+
 <body>
-<div class="title">
-<h1> <?php echo $projectName; ?> </h1>
-</div>
-<form name="Project Code" action="SmartSort.php" method="post" id = "code" class="center">
+<form name="Project Code" action="SmartSortForm.php" method="post" id = "code" class="center">
 <label class="control-label"> Project Code </label>
 <input id="ProjectCodeInput" class="formControl" type="text" name="ProjectCode" placeholder="Enter project code" required><br>
+    <button type="submit" class="button" id="finishBtn"> GO </button>
 </form>
-    <button class="button" id="button"> Click Me </button>
 </body>
 </html>

@@ -25,20 +25,12 @@ include "loginform.php";
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
-            window.onload = function(){
-                $("#delete").hide();
-                $("#update").hide();
-            }
-            $(document).ready(function(){
-                $("#showDelete").click(function(){
-                    $("#delete").show();
-                    $("#update").hide();
+            $(document).ready(function () {
+                $(document).on('mouseenter', '.projectRow', function () {
+                    $(this).find(":button").show();
+                }).on('mouseleave', '.projectRow', function () {
+                    $(this).find(":button").hide();
                 });
-                $("#showUpdate").click(function(){
-                    $("#delete").hide();
-                    $("#update").show();
-                });
-
             });
         </script>
     </head>
@@ -82,41 +74,44 @@ if ($_SESSION['privileges'] == "1") {
 		<th><a href='projects.pho?sort=Link'> Link to Project </a></th>
 	</tr>";
     while ($row = mysql_fetch_array($result)) {
-        echo "<tr> <td>" . $row["ProjectID"] . "</td> <td>" . $row["ProjectName"] . "</td> <td>" . $row["Link"];
-        echo " </td></tr>";
+
+        echo "<tr><td><form name=\"Delete Project\" action=\"DeleteProjectForm.php\" method=\"post\" id = \"delete\" class=\"center\">
+              <div id='projectRow' class='projectRow'><button class='trash' type='submit' hidden> <i class='fa fa-trash-o'></i></button>"
+            . $row["ProjectID"] . "</td><td>" . $row["ProjectName"] . "</td> <td>" . $row["Link"];
+        echo "</div></form></td></tr>";
     }
     echo "</table>"
     ?>
     </div>
     <br>
     <br>
-    <table width="50%">
-        <tr>
-            <td width = "25%" align="center"><button id="showDelete">Delete Project</button></td>
-            <td width = "25%" align="center"><button id="showUpdate">Update Project</button></td>
-        </tr>
-        <tr >
-            <td width = "50%" align="center">
-                <form name="Delete Project" action="DeleteProjectForm.php" method="post" id = "delete" class="center">
-                    <div class="field">
-                        <label>Project ID (Unique)</label>
-                        <input type="text" name="id"><br>
-                        <input type="submit" value="Submit">
-                    </div>
-                </form>
-            <td width = "50%" align="center">
-                <form name="Update Project" action="UpdateProjectForm.php" method="post" id = "update" class="center">
-                    <div class="field">
-                        <label>Project ID (Unique)</label>
-                        <input type="text" name="id"><br>
-                        <label> Project Name </label>
-                        <input type="text" name="address"><br>
-                        <input type="submit" value="Submit">
-                    </div>
-                </form>
-            </td>
-        </tr>
-    </table>
+<!--    <table width="50%">-->
+<!--        <tr>-->
+<!--            <td width = "25%" align="center"><button id="showDelete">Delete Project</button></td>-->
+<!--            <td width = "25%" align="center"><button id="showUpdate">Update Project</button></td>-->
+<!--        </tr>-->
+<!--        <tr >-->
+<!--            <td width = "50%" align="center">-->
+<!--                <form name="Delete Project" action="DeleteProjectForm.php" method="post" id = "delete" class="center">-->
+<!--                    <div class="field">-->
+<!--                        <label>Project ID (Unique)</label>-->
+<!--                        <input type="text" name="id"><br>-->
+<!--                        <input type="submit" value="Submit">-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            <td width = "50%" align="center">-->
+<!--                <form name="Update Project" action="UpdateProjectForm.php" method="post" id = "update" class="center">-->
+<!--                    <div class="field">-->
+<!--                        <label>Project ID (Unique)</label>-->
+<!--                        <input type="text" name="id"><br>-->
+<!--                        <label> Project Name </label>-->
+<!--                        <input type="text" name="address"><br>-->
+<!--                        <input type="submit" value="Submit">-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
     </div>
     </body>
     </html>

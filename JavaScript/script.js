@@ -1,3 +1,6 @@
+var obj = {};
+var counter = 0;
+
 // target elements with the "draggable" class
 interact('.draggable')
     .draggable({
@@ -77,13 +80,15 @@ interact('.dropzone').dropzone({
     },
     ondrop: function (event) {
         $(document).ready(function(){
-            var element = event.relatedTarget;
-            // alert($(element).data("id"));
-            var x = $(element).data("id");
-                const cards = document.getElementsByName(x.toString());
+
+            var header_id = $(event.target).data("id");
+            var card_id = $(event.relatedTarget).data("id");
+            obj[counter] = {header_id : header_id, card_id : card_id};
+                const cards = document.getElementsByName(card_id.toString());
                 var rect = cards[0].getBoundingClientRect();
-                //alert(“Coordinates: ” + rect.left + “px, ” + rect.top + “px”);
-                alert('Left position: '+ rect.left);
+                //alert('Left position: '+ rect.left);
+            console.log(obj);
+            counter++;
         });
     },
     ondropdeactivate: function (event) {
@@ -92,3 +97,4 @@ interact('.dropzone').dropzone({
         event.target.classList.remove('drop-target');
     }
 });
+// console.log(obj);
