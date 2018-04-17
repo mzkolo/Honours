@@ -94,7 +94,6 @@ else if (isset($_POST['ProjectCode'])) {
     echo '</div>';
 //    print_r($cards);
 //    print_r($headings);
-
     $userID = uniqid('Project exists, this is the unique userID prefix: ');
 
 
@@ -114,11 +113,42 @@ else if (isset($_POST['ProjectCode'])) {
     <script src="JavaScript/script.js"></script>
 </head>
 <body>
-<?php
+    <button class="finishBtn"> Finished </button>
+<script>
+    $(".finishBtn").click(function(e) {
+        var projectID = <?=$projectID?>;
+        // alert (projectID);
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "SessionForm.php",
+            data: {
+                id: projectID, // < note use of 'this' here
+                obj:obj
+            },
+            success: function(result) {
+                console.log(result);
+            },
+            error: function(result) {
+                alert('error');
+            }
+        });
+    });
+</script>
 
-?>
-<form name="Session Complete" action="SessionForm.php" method="post" id = "session" class="center">
-    <button type="submit" class="finishBtn"> Finished </button>
-</form>
+<!--<script>-->
+<!--    function loadDoc() {-->
+<!--        var xhttp = new XMLHttpRequest();-->
+<!--        xhttp.onreadystatechange = function() {-->
+<!--            if (this.readyState == 4 && this.status == 200) {-->
+<!--                document.getElementsByName(card_id.toString()).innerHTML = this.responseText;-->
+<!--            }-->
+<!--        };-->
+<!--        xhttp.open("POST", "script.js", true);-->
+<!--        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");-->
+<!--        // xhttp.send("fname=Henry&lname=Ford");-->
+<!--    }-->
+<!--</script>-->
+
 </body>
 </html>

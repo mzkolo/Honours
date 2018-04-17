@@ -7,44 +7,51 @@
     font-size: 30px;
     float: top;
     border-bottom: 3px solid #008aa3;
+    background-color: #ffffff;
 }
 
 .dropzone {
     background-color: #f5f5f5;
-    border: dashed 4px transparent;
     border-radius: 4px;
     margin-right: 10px;
     margin-bottom: 10px;
     padding: 50px;
-    width: 350px;
+    width: 340px;
     transition: background-color 0.3s;
     height: 100%;
     display: inline-block;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 500;
     font-size: 22px;
+    text-align: center;
+    overflow-y: auto;
 }
 
 .dropHeadings{
     margin-right: 30px;
-    width: 80%;
+    width: 76%;
     height: 100%;
     padding: 80px 20px;
+    overflow-y: auto;
 }
 
 .drop-active {
-    border-color: #008aa3;
+    background-color: #cdcdcd;
+    border: #fff solid;
 }
 
 .drop-target {
-    background-color: #cdcdcd;
-    border: #fff solid;
+    border: dashed 4px #008aa3;
+    /*border-color: #008aa3;*/
+    background-color: #f5f5f5;
 }
 
 .drag-drop {
     max-width: 300px;
     padding: 20px;
     cursor: grab;
+    overflow-y: auto;
+
 
     color: #fff;
     background-color: #008aa3;
@@ -83,7 +90,7 @@
     transition: all 20ms ease;
     border-color: #008aa3;
     margin-top: -45px!important;
-    margin-left: 90%;
+    margin-left: 92%;
 }
 
 .finishBtn:hover {

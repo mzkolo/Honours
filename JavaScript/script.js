@@ -1,5 +1,5 @@
-var obj = {};
-var counter = 0;
+var obj = [];
+//var counter = 0;
 
 // target elements with the "draggable" class
 interact('.draggable')
@@ -16,17 +16,7 @@ interact('.draggable')
         autoScroll: true,
 
         // call this function on every dragmove event
-        onmove: dragMoveListener,
-        // call this function on every dragend event
-        onend: function (event) {
-            var textEl = event.target.querySelector('p');
-
-            textEl && (textEl.textContent =
-                'moved a distance of '
-                + (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
-                Math.pow(event.pageY - event.y0, 2) | 0))
-                    .toFixed(2) + 'px');
-        }
+        onmove: dragMoveListener
     });
 
 function dragMoveListener (event) {
@@ -80,17 +70,28 @@ interact('.dropzone').dropzone({
     },
     ondrop: function (event) {
         $(document).ready(function(){
-
-            var header_id = $(event.target).data("id");
-            var card_id = $(event.relatedTarget).data("id");
-            obj[counter] = {header_id : header_id, card_id : card_id};
+             var header_id = $(event.target).data("id");
+             var card_id = $(event.relatedTarget).data("id");
+            obj[card_id] = {header_id : header_id};
+            // obj [card_id] = {card_id : card_id, header_id : header_id};
                 const cards = document.getElementsByName(card_id.toString());
                 var rect = cards[0].getBoundingClientRect();
                 //alert('Left position: '+ rect.left);
-            console.log(obj);
-            counter++;
+          console.log(obj);
+            // counter++;
         });
     },
+    // window:onload = function(event) {
+    //     var header_id = $(event.target).data("id");
+    //     var card_id = $(event.relatedTarget).data("id");
+    //     // obj[card_id] = {header_id : header_id};
+    //     // obj [card_id] = {header_id : header_id};
+    //     // const cards = document.getElementsByName(card_id.toString());
+    //     // var rect = cards[0].getBoundingClientRect();
+    //     //alert('Left position: '+ rect.left);
+    //     console.log(obj);
+    //     // counter++;
+    // },
     ondropdeactivate: function (event) {
         // remove active dropzone feedback
         event.target.classList.remove('drop-active');
