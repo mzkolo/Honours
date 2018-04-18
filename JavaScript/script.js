@@ -72,8 +72,8 @@ interact('.dropzone').dropzone({
         $(document).ready(function(){
              var header_id = $(event.target).data("id");
              var card_id = $(event.relatedTarget).data("id");
-            obj[card_id] = {header_id : header_id};
-            // obj [card_id] = {card_id : card_id, header_id : header_id};
+            // obj[card_id] = {header_id : header_id};
+            obj [card_id] = {card_id : card_id, header_id : header_id};
                 const cards = document.getElementsByName(card_id.toString());
                 var rect = cards[0].getBoundingClientRect();
                 //alert('Left position: '+ rect.left);

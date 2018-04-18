@@ -19,32 +19,35 @@ for each heading{
 
 include "db.php";
 
-$userID = uniqid('Project exists, this is the unique userID prefix: ');
+$mysqli = new mysqli("silva.computing.dundee.ac.uk", "cardsort", "9844.cs.4498");
+
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error($db));
+    exit();
+}
+
+$userID = uniqid();
 $projectID = $_POST["id"];
 $obj = $_POST["obj"];
 
-//$obj = (object) array(
-//    91 => (object) array(
-//        'header_id' => 34
-//    ),
-//    92 => (object) array(
-//        'header_id' => 35
-//    ),
-//);
-
-//print_r($obj);
-
-$string = " ";
 
 foreach($obj as $index=>$key){
 
-//    $card_id = $index;
-//    $header_id = $key["header_id"];
-//
-//    $string .= $card_id . "+".$header_id."-";
+    if($key != null)
+    {
+        $card_id = $index;
+        $header_id = $key['header_id'];
+
+        mysql_query("INSERT INTO cardsortdb.studies (userPrefix, projectID, cardID, headingID) VALUES ('$userID', '$projectID', '$card_id', '$header_id')");
+
+        echo "The user id " .$userID . "This is card id " . $card_id . " under the header id " . $header_id . "from the project " . $projectID;
+        echo "<br>";
+    }
+
+
 
 }
-
-echo json_encode($obj);
+//
+//echo json_encode($obj);
 
 

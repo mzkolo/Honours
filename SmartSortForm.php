@@ -79,6 +79,10 @@ else if (isset($_POST['ProjectCode'])) {
     $cards = array();
     $sqlQry = "SELECT * FROM cardsortdb.cards WHERE Project = '$projectID'";
 
+    echo ' <a href="SmartSort.php"  onclick="return confirm(\'Are you sure you want to go back, you will lose all data.\');"
+  ><i id="back" class="fa fa-arrow-circle-o-left fa-lg" > Back </i></a><br><br>
+    <button class="finishBtn"> Finished </button>';
+
     echo '<div class="draggableCards">';
     $result = mysql_query($sqlQry, $db);
     if ($result == false) {
@@ -94,15 +98,17 @@ else if (isset($_POST['ProjectCode'])) {
     echo '</div>';
 //    print_r($cards);
 //    print_r($headings);
-    $userID = uniqid('Project exists, this is the unique userID prefix: ');
-
-
+//    $userID = uniqid('Project exists, this is the unique userID prefix: ');
 }
+
+
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8"/>
     <title> SmartSort | Card Sort </title>
     <link rel="stylesheet" href="CSS/DragDropStyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -113,42 +119,39 @@ else if (isset($_POST['ProjectCode'])) {
     <script src="JavaScript/script.js"></script>
 </head>
 <body>
-    <button class="finishBtn"> Finished </button>
+
+<form id="form" action="SessionForm.php" method="post">
+    <input type="hidden" name="project_id" value="<?=$projectID?>"/>
+    <input type="hidden" name="obj" id="obj" value=""/>
+</form>
+
 <script>
     $(".finishBtn").click(function(e) {
+
+        e.preventDefault();
+
         var projectID = <?=$projectID?>;
         // alert (projectID);
         e.preventDefault();
         $.ajax({
-            type: "POST",
-            url: "SessionForm.php",
-            data: {
-                id: projectID, // < note use of 'this' here
-                obj:obj
-            },
-            success: function(result) {
-                console.log(result);
-            },
-            error: function(result) {
-                alert('error');
-            }
+           type: "POST",
+           url: "SessionForm.php",
+           data: {
+               id: projectID, // < note use of 'this' here
+               obj:obj
+           },
+           success: function(result) {
+               // location.href = "https://zeno.computing.dundee.ac.uk/2017-projects/cardsort/SmartSort.php"
+                // alert(obj);
+               // console.log(result);
+           },
+           error: function(result) {
+               alert('error');
+           }
         });
     });
 </script>
 
-<!--<script>-->
-<!--    function loadDoc() {-->
-<!--        var xhttp = new XMLHttpRequest();-->
-<!--        xhttp.onreadystatechange = function() {-->
-<!--            if (this.readyState == 4 && this.status == 200) {-->
-<!--                document.getElementsByName(card_id.toString()).innerHTML = this.responseText;-->
-<!--            }-->
-<!--        };-->
-<!--        xhttp.open("POST", "script.js", true);-->
-<!--        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");-->
-<!--        // xhttp.send("fname=Henry&lname=Ford");-->
-<!--    }-->
-<!--</script>-->
 
 </body>
 </html>
