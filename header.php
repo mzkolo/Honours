@@ -24,7 +24,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="home.php">Dashboard</a></li>
-                        <li class="active"><a href="projects.php">Projects</a></li>
+                        <li class="active"><a href="Projects.php">Project Results</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
                         <li class=""><a href="logout.php">Logout <i class="fa fa-sign-out"></i></a></li>

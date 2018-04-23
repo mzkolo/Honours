@@ -65,7 +65,7 @@ if ($_SESSION['privileges'] == "1") {
 	<br>
 	<tr>
 		<th><a href='project.php?sort=ProjectID'> ID </a></th>
-		<th><a href='projects.php?sort=ProjectName'> Project </a></th>
+		<th><a href='Projects.php?sort=ProjectName'> Project </a></th>
 		<th><a href='projects.pho?sort=Link'> Link to Project </a></th>
 	</tr>";
         while ($row = mysql_fetch_array($result)) {

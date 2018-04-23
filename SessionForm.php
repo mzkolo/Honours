@@ -40,14 +40,9 @@ foreach($obj as $index=>$key){
 
         mysql_query("INSERT INTO cardsortdb.studies (userPrefix, projectID, cardID, headingID) VALUES ('$userID', '$projectID', '$card_id', '$header_id')");
 
-        echo "The user id " .$userID . "This is card id " . $card_id . " under the header id " . $header_id . "from the project " . $projectID;
+//        echo "The user id " .$userID . "This is card id " . $card_id . " under the header id " . $header_id . "from the project " . $projectID;
         echo "<br>";
     }
 
-
-
 }
-//
-//echo json_encode($obj);
-
 

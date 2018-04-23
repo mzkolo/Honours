@@ -141,7 +141,6 @@ else if (isset($_POST['ProjectCode'])) {
                obj:obj
            },
            success: function(result) {
-               // location.href = "https://zeno.computing.dundee.ac.uk/2017-projects/cardsort/SmartSort.php"
                 // alert(obj);
                // console.log(result);
            },
@@ -149,9 +148,8 @@ else if (isset($_POST['ProjectCode'])) {
                alert('error');
            }
         });
+        // location.href = "https://zeno.computing.dundee.ac.uk/2017-projects/cardsort/SmartSort.php"
     });
 </script>
-
-
 </body>
 </html>

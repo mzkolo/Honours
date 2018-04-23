@@ -178,3 +178,16 @@
     margin-top: 10px;
     width: 50%!important;
 }
+
+.projectTable{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin-top: 50px;
+    margin-left: 5%;
+}
+
+#projectTable td, #projectTable th {
+    border: 1px solid #204060;
+    padding: 8px;
+}

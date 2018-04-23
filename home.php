@@ -36,7 +36,7 @@ include "loginform.php";
     </head>
 <body>
 <?php
-    $username = $_SESSION['firstname'];
+$username = $_SESSION['firstname'];
 ?>
     <form Name="Create New Project" action="ProjectForm.php" method="post" id="NewProject">
         <div id="CreateBtn" class="CreateBtn">
@@ -61,56 +61,26 @@ if ($_SESSION['privileges'] == "1") {
         $sql = "SELECT ProjectID, ProjectName, Link, FROM projects WHERE ProjectID='$ID' or ProjectName='$ID' ORDER BY $order";
     }
     $result = mysql_query($sql, $db);
-?>
+    ?>
     <div class="projectTable">
-    <?php
+        <?php
 
-    echo "<table id='table'>
+        echo "<table id='table'>
 	<caption><h2>Your Projects</h2></caption>
 	<br>
 	<tr>
 	    <th> <form name='Delete Project' action='DeleteProjectForm.php' method='post' id='delete' class='center'></th>
-		<th><a href='project.php?sort=ProjectID'> ID </a></th>
-		<th><a href='projects.php?sort=ProjectName'> Project </a></th>
-		<th><a href='projects.pho?sort=Link'> Link to Project </a></th>
+		<th><a href='Projects.php?sort=ProjectID'> ID </a></th>
+		<th><a href='Projects.php?sort=ProjectName'> Project </a></th>
+		<th><a href='Projects.php?sort=Link'> Link to Project </a></th>
 	</tr>";
-    while ($row = mysql_fetch_array($result)) {
-
-        echo "<tr><td><input name='id' value='' hidden><button class='trash' type='submit'> <i class='fa fa-trash-o'></i>" . "</button></input></td><td>" . $row["ProjectID"] . "</td><td>" . $row["ProjectName"] . "</td> <td>" . $row["Link"];
-        echo "</div></form></td></tr>";
-    }
-    echo "</table>"
-    ?>
+        while ($row = mysql_fetch_array($result)) {
+            echo "<tr><td><input name='id' value='' hidden><button class='trash' type='submit'> <i class='fa fa-trash-o'></i>" . "</button></input></td><td>" . $row["ProjectID"] . "</td><td>" . $row["ProjectName"] . "</td> <td>" . $row["Link"];
+            echo "</div></form></td></tr>";
+        }
+        echo "</table>"
+        ?>
     </div>
-    <br>
-    <br>
-<!--    <table width="50%">-->
-<!--        <tr>-->
-<!--            <td width = "25%" align="center"><button id="showDelete">Delete Project</button></td>-->
-<!--            <td width = "25%" align="center"><button id="showUpdate">Update Project</button></td>-->
-<!--        </tr>-->
-<!--        <tr >-->
-<!--            <td width = "50%" align="center">-->
-<!--                <form name="Delete Project" action="DeleteProjectForm.php" method="post" id = "delete" class="center">-->
-<!--                    <div class="field">-->
-<!--                        <label>Project ID (Unique)</label>-->
-<!--                        <input type="text" name="id"><br>-->
-<!--                        <input type="submit" value="Submit">-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--            <td width = "50%" align="center">-->
-<!--                <form name="Update Project" action="UpdateProjectForm.php" method="post" id = "update" class="center">-->
-<!--                    <div class="field">-->
-<!--                        <label>Project ID (Unique)</label>-->
-<!--                        <input type="text" name="id"><br>-->
-<!--                        <label> Project Name </label>-->
-<!--                        <input type="text" name="address"><br>-->
-<!--                        <input type="submit" value="Submit">-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </table>-->
     </div>
     </body>
     </html>
