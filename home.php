@@ -75,7 +75,7 @@ if ($_SESSION['privileges'] == "1") {
 		<th><a href='Projects.php?sort=Link'> Link to Project </a></th>
 	</tr>";
         while ($row = mysql_fetch_array($result)) {
-            echo "<tr><td><input name='id' value='' hidden><button class='trash' type='submit'> <i class='fa fa-trash-o'></i>" . "</button></input></td><td>" . $row["ProjectID"] . "</td><td>" . $row["ProjectName"] . "</td> <td>" . $row["Link"];
+            echo "<tr><td><input name='id' value='' hidden><button class='trash' type='submit'> <i class='fa fa-trash-o'></i>" . "</button></input></td><td><a href='ResultsForm.php?id=". $row["ProjectID"] ."'>" . $row["ProjectID"] . "</a></td><td>" . $row["ProjectName"] . "</td> <td>" . $row["Link"];
             echo "</div></form></td></tr>";
         }
         echo "</table>"

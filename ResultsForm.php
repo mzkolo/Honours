@@ -8,6 +8,7 @@
 
 include "db.php";
 include "loginform.php";
+include "header.php";
 
 $mysqli = new mysqli("silva.computing.dundee.ac.uk", "cardsort", "9844.cs.4498");
 
@@ -23,34 +24,33 @@ if (mysqli_connect_errno()) {
         <title> SmartSort | Results </title>
         <link rel="stylesheet" type="text/css" href="CSS/table.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
     </head>
 <body>
 <?php
     $username = $_SESSION['firstname'];
     ?>
-
+<div class="content">
     <h1> Hello <?php echo $username; ?> </h1>
 <?php
-//$projectName = $_SESSION['ProjectName'];
 
 if ($_SESSION['privileges'] == "1") {
 
-    $order = isset($_GET['sort']) ? $_GET['sort'] : 'ProjectID';
+    $order = isset($_GET['id']) ? $_GET['id'] : 'ProjectID';
 
     error_reporting(0);
     $ID = $_POST["search"];
     $headers_Arr = [];
 
-    $sql = "SELECT HeadingID, HeadingLabel FROM headings WHERE Project = 36";
+    $sql = "SELECT HeadingID, HeadingLabel FROM headings WHERE Project = $order";
     $result = mysql_query($sql, $db);
 
     ?>
-    <div class="projectTable">
-        <table id="projectTable" class='table' >
-            <thead>
+    <div class="resultTable">
+        <table id="resultTable" class='table' >
+            <thead class="thead-dark">
             <tr>
                 <th>
-
                 </th>
         <?php
 
@@ -63,57 +63,45 @@ if ($_SESSION['privileges'] == "1") {
       
                     <th>
                         " . $row["HeadingLabel"] . "
-                    </th>
-                
-            
+                    </th> 
         ";
         }
         ?>
             </tr>
-
             </thead>
             <tbody>
             <?php
-            $sql1 = "SELECT CardID, CardLabel FROM cards WHERE Project = 36";
+
+            $sql1 = "SELECT CardID, CardLabel FROM cards WHERE Project = $order";
             $result1 = mysql_query($sql1, $db);
 
             while ($row1 = mysql_fetch_array($result1)) {
-
-                $headers_Arr[] = $row1["HeadingID"];
                 $cardID = $row1['CardID'];
-
                 ?>
                     <tr>
-
                     <th>
                         <?=$row1["CardLabel"]?>
                     </th>
-
                         <?php
-
                         foreach($headers_Arr as $ID)
                         {
-                            $sql2 = "SELECT COUNT(*) as total FROM cardsortdb.studies where projectID = 36 AND cardID= $cardID AND headingID = $ID";
+                            $sql2 = "SELECT COUNT(*) as total FROM cardsortdb.studies where projectID = $order AND cardID= $cardID AND headingID = $ID";
                             $result2 = mysql_query($sql2, $db);
                             $data=mysql_fetch_assoc($result2);
-
                             ?>
                             <td>
                                 <?=$data["total"]?>
                             </td>
                             <?php
-
                         }
-
                         ?>
                     </tr>
         <?php
-
             }
             ?>
-
             </tbody>
         </table>
+    </div>
     </div>
     </body>
     </html>

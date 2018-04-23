@@ -151,10 +151,6 @@
     padding-top: 58px;
 }
 
-.projectTable{
-    padding-top: 5px;!important;
-}
-
 .category{
     padding-right: 500px;
 }
@@ -179,15 +175,16 @@
     width: 50%!important;
 }
 
-.projectTable{
+.resultTable{
+    padding-top: 5%;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     border-collapse: collapse;
     width: 80%;
-    margin-top: 50px;
     margin-left: 5%;
 }
 
-#projectTable td, #projectTable th {
+#resultTable td, #resultTable th {
     border: 1px solid #204060;
     padding: 8px;
+    text-align: center;
 }
