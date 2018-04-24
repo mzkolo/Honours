@@ -37,6 +37,7 @@ if (mysqli_connect_errno()) {
 if ($_SESSION['privileges'] == "1") {
 
     $order = isset($_GET['id']) ? $_GET['id'] : 'ProjectID';
+    $order1 = isset($_GET['Project']) ? $_GET['Project'] : 'ProjectName';
 
     error_reporting(0);
     $ID = $_POST["search"];

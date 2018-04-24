@@ -69,13 +69,17 @@ if ($_SESSION['privileges'] == "1") {
 	<caption><h2>Your Projects</h2></caption>
 	<br>
 	<tr>
-	    <th> <form name='Delete Project' action='DeleteProjectForm.php' method='post' id='delete' class='center'></th>
-		<th><a href='Projects.php?sort=ProjectID'> ID </a></th>
-		<th><a href='Projects.php?sort=ProjectName'> Project </a></th>
+		<th><a href='Projects.php?sort=ProjectID'> Project ID </a></th>
+		<th><a href='Projects.php?sort=ProjectName'> Project Title </a></th>
 		<th><a href='Projects.php?sort=Link'> Link to Project </a></th>
+        <th> <form name='Delete Project' action='DeleteProjectForm.php' method='post' id='delete' class='center'></th>
+
 	</tr>";
         while ($row = mysql_fetch_array($result)) {
-            echo "<tr><td><input name='id' value='' hidden><button class='trash' type='submit'> <i class='fa fa-trash-o'></i>" . "</button></input></td><td><a href='ResultsForm.php?id=". $row["ProjectID"] ."'>" . $row["ProjectID"] . "</a></td><td>" . $row["ProjectName"] . "</td> <td>" . $row["Link"];
+            echo "<tr><td><a href='ResultsForm.php?id=". $row["ProjectID"] ."'> " . $row["ProjectID"] .
+                 "</a></td><td><a href='ResultsForm.php?id=".$row["ProjectID"]."'>" . $row["ProjectName"] .
+                 "</a></td> <td>" . $row["Link"].
+                "</td><td><input name='id' value='' hidden><button class='trash' type='submit'> <i class='fa fa-trash-o'></i>" . "</button></input>";
             echo "</div></form></td></tr>";
         }
         echo "</table>"

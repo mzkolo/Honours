@@ -39,13 +39,9 @@ else if (isset($_POST['ProjectCode'])) {
     } else {
         $row = mysql_fetch_array($result);
         if ($row["ProjectID"] != null){
-//            echo uniqid('Project exists, this is the unique userID prefix: ');
             $projectID = $row["ProjectID"];
             $projectName = $row["ProjectName"];
         }
-//        else if ($row["ProjectID"] == null) {
-//            echo "No project";
-//        }
     }
     echo'<div id="title" ='.$row["ProjectName"].' class="title">';
     echo  $row["ProjectName"];
@@ -79,9 +75,9 @@ else if (isset($_POST['ProjectCode'])) {
     $cards = array();
     $sqlQry = "SELECT * FROM cardsortdb.cards WHERE Project = '$projectID'";
 
-    echo ' <a href="SmartSort.php"  onclick="return confirm(\'Are you sure you want to go back, you will lose all data.\');"
-  ><i id="back" class="fa fa-arrow-circle-o-left fa-lg" > Back </i></a><br><br>
-    <button class="finishBtn"> Finished </button>';
+    echo '<a href="SmartSort.php"  onclick="return confirm(\'Are you sure you want to go back, you will lose all data.\');">
+          <i id="back" class="fa fa-arrow-circle-o-left fa-lg" > Back </i></a><br><br>
+          <button class="finishBtn"> Finished </button>';
 
     echo '<div class="draggableCards">';
     $result = mysql_query($sqlQry, $db);
@@ -96,13 +92,7 @@ else if (isset($_POST['ProjectCode'])) {
         }
     }
     echo '</div>';
-//    print_r($cards);
-//    print_r($headings);
-//    $userID = uniqid('Project exists, this is the unique userID prefix: ');
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -131,7 +121,6 @@ else if (isset($_POST['ProjectCode'])) {
         e.preventDefault();
 
         var projectID = <?=$projectID?>;
-        // alert (projectID);
         e.preventDefault();
         $.ajax({
            type: "POST",
